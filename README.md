@@ -1,1 +1,1 @@
-# book-shop-demo-frontend
+# online-shop-demo-frontend
