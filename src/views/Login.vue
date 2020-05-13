@@ -22,7 +22,7 @@
           </v-card-text>
           <v-card-actions>
             <v-spacer></v-spacer>
-            <v-btn depressed color="primary">Submit</v-btn>
+            <v-btn depressed color="primary" @click="submit">Submit</v-btn>
           </v-card-actions>
         </v-card>
       </v-col>
@@ -32,6 +32,11 @@
 
 <script>
 export default {
-  name: "Login"
+  name: "Login",
+  methods: {
+    submit() {
+      // submit form to server/API here...
+    },
+  },
 };
 </script>

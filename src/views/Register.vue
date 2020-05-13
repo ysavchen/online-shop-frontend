@@ -50,7 +50,7 @@
           </v-card-text>
           <v-card-actions>
             <v-spacer></v-spacer>
-            <v-btn depressed color="primary" :disabled="!valid" @click="validate">Submit</v-btn>
+            <v-btn depressed color="primary" :disabled="!valid" @click="submit">Submit</v-btn>
           </v-card-actions>
         </v-card>
       </v-col>
@@ -65,6 +65,11 @@ export default {
     passwordMatch() {
       return () => this.password === this.verify || "Password must match";
     }
+  },
+  methods: {
+    submit() {
+      // submit form to server/API here...
+    },
   },
   data: () => ({
     valid: true,
