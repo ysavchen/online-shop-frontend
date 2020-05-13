@@ -20,8 +20,13 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
   name: "Navbar",
+  data: () => ({
+    sitename: "Online Store",
+  }),
   methods: {
     registerForm() {
       this.$router.push({ name: "register" });
@@ -31,11 +36,13 @@ export default {
     },
     checkout() {
       this.$router.push({ name: "checkout" });
-    }
+    },
   },
-  data: () => ({
-    sitename: "Online Store",
-    cartItemCount: 0 //change by click via vuex ?
-  })
+  computed: {
+    ...mapGetters(["cart"]),
+    cartItemCount() {
+      return this.cart.length;
+    }
+  }
 };
 </script>

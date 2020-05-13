@@ -33,30 +33,17 @@ import { mapGetters } from "vuex";
 export default {
   name: "Books",
   data: () => ({
-    cart: []
   }),
   methods: {
     details(bookId) {
       this.$router.push({ name: "bookDetails", params: { id: bookId } });
     },
-    addToCart(bookId) {
-      this.cart.push(bookId);
+    addToCart(book) {
+      this.$store.dispatch('addToCart', book);
     },
-    cartCount(id) {
-      let count = 0;
-      for (var i = 0; i < this.cart.length; i++) {
-        if (this.cart[i] === id) {
-          count++;
-        }
-      }
-      return count;
-    }
   },
   computed: {
     ...mapGetters(["books"]),
-    cartItemCount() {
-      return this.cart.length || "";
-    }
   },
   created() {
     this.$store.dispatch("initStore");
