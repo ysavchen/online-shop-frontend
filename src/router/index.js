@@ -20,11 +20,6 @@ const routes = [
     component: BookDetails
   },
   {
-    path: '/about',
-    name: 'about',
-    component: () => import('@/views/About.vue')
-  },
-  {
     path: '/login',
     name: 'login',
     component: Login
