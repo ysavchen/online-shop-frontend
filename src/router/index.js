@@ -1,38 +1,51 @@
 import Vue from 'vue'
-import Router from 'vue-router'
-import Main from '@/components/Main'
-import BookDetails from '@/components/items/BookDetails'
-import Login from '@/components/auth/Login'
-import Register from '@/components/auth/Register'
+import VueRouter from 'vue-router'
+import Books from '@/views/Books.vue'
+import Login from '@/views/Login.vue'
+import Register from '@/views/Register.vue'
+import Checkout from '@/views/Checkout.vue'
+import BookDetails from '@/views/BookDetails.vue'
 
-Vue.use(Router)
+Vue.use(VueRouter)
 
-export default new Router({
+const routes = [
+  {
+    path: '/',
+    name: 'Books',
+    component: Books
+  },
+  {
+    path: '/book/:id',
+    name: 'BookDetails',
+    component: BookDetails
+  },
+  {
+    path: '/about',
+    name: 'About',
+    component: () => import('@/views/About.vue')
+  },
+  {
+    path: '/login',
+    name: 'Login',
+    component: Login
+  },
+  {
+    path: '/register',
+    name: 'Register',
+    component: Register
+  },
+  {
+    path: '/checkout',
+    name: 'Checkout',
+    component: Checkout
+  },
+  {
+    path: '*',
+    redirect: '/'
+  }
+]
+
+export default new VueRouter({
   mode: 'history',
-  routes: [
-    {
-      path: '/',
-      name: 'iMain',
-      component: Main
-    },
-    {
-      path: '/book/:id',
-      name: 'Id',
-      component: BookDetails
-    },
-    {
-      path: '/login',
-      name: 'Login',
-      component: Login
-    },
-    {
-      path: '/register',
-      name: 'Register',
-      component: Register
-    },
-    {
-      path: '*',
-      redirect: '/'
-    }
-  ]
+  routes
 })
