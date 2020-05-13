@@ -3,7 +3,7 @@
     <v-row>
       <v-col sm="5">
         <div>
-          <v-img :src="book.image" contain="true" aspect-ratio="0.8"></v-img>
+          <v-img :src="book.image" contain aspect-ratio="0.8"></v-img>
         </div>
       </v-col>
       <v-col>

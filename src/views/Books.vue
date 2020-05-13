@@ -3,9 +3,9 @@
     <div>
       <v-row no-gutters>
         <template v-for="book in books">
-          <v-col :key="book">
+          <v-col :key="book.id">
             <v-card max-width="250" class="pt-2 ma-2">
-              <v-img :src="book.image" contain="true" aspect-ratio="0.8"></v-img>
+              <v-img :src="book.image" contain aspect-ratio="0.8"></v-img>
 
               <v-card-title primary-title>
                 <div>
@@ -16,8 +16,8 @@
               </v-card-title>
 
               <v-card-actions>
-                <v-btn outlined small @click="details(book)">Details</v-btn>
-                <v-btn outlined small @click="addToCart(book)">Add to cart</v-btn>
+                <v-btn outlined small @click="details(book.id)">Details</v-btn>
+                <v-btn outlined small @click="addToCart(book.id)">Add to cart</v-btn>
               </v-card-actions>
             </v-card>
           </v-col>
@@ -36,11 +36,11 @@ export default {
     cart: []
   }),
   methods: {
-    details(book) {
-      this.$router.push({ name: "bookDetails", params: { id: book.id } });
+    details(bookId) {
+      this.$router.push({ name: "bookDetails", params: { id: bookId } });
     },
-    addToCart(book) {
-      this.cart.push(book.id);
+    addToCart(bookId) {
+      this.cart.push(bookId);
     },
     cartCount(id) {
       let count = 0;
