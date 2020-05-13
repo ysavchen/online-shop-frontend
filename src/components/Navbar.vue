@@ -24,13 +24,13 @@ export default {
   name: "Navbar",
   methods: {
     registerForm() {
-      this.$router.push({ name: "Register" });
+      this.$router.push({ name: "register" });
     },
     loginForm() {
-      this.$router.push({ name: "Login" });
+      this.$router.push({ name: "login" });
     },
     checkout() {
-      this.$router.push({ name: "Checkout" });
+      this.$router.push({ name: "checkout" });
     }
   },
   data: () => ({

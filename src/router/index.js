@@ -11,32 +11,32 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
-    name: 'Books',
+    name: 'books',
     component: Books
   },
   {
     path: '/books/:id',
-    name: 'BookDetails',
+    name: 'bookDetails',
     component: BookDetails
   },
   {
     path: '/about',
-    name: 'About',
+    name: 'about',
     component: () => import('@/views/About.vue')
   },
   {
     path: '/login',
-    name: 'Login',
+    name: 'login',
     component: Login
   },
   {
     path: '/register',
-    name: 'Register',
+    name: 'register',
     component: Register
   },
   {
     path: '/checkout',
-    name: 'Checkout',
+    name: 'checkout',
     component: Checkout
   },
   {

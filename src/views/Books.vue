@@ -28,15 +28,16 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
   name: "Books",
   data: () => ({
-    books: {}, // store in vuex
     cart: []
   }),
   methods: {
-    details() {
-      this.$router.push({ name: "BookDetails" });
+    details(book) {
+      this.$router.push({ name: "bookDetails", params: { id: book.id } });
     },
     addToCart(book) {
       this.cart.push(book.id);
@@ -52,15 +53,13 @@ export default {
     }
   },
   computed: {
+    ...mapGetters(["books"]),
     cartItemCount() {
       return this.cart.length || "";
     }
   },
   created() {
-    this.axios.get("books.json").then(response => {
-      this.books = response.data.books;
-      console.log(this.books);
-    });
+    this.$store.dispatch("initStore");
   }
 };
 </script>
