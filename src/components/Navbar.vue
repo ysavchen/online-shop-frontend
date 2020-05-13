@@ -11,7 +11,7 @@
 
       <v-btn depressed class="primary mr-4" @click="loginForm">Login</v-btn>
 
-      <v-btn icon @click="checkout">
+      <v-btn icon @click="openCheckout">
         {{ cartItemCount }}
         <v-icon>mdi-cart-outline</v-icon>
       </v-btn>
@@ -34,7 +34,7 @@ export default {
     loginForm() {
       this.$router.push({ name: "login" });
     },
-    checkout() {
+    openCheckout() {
       this.$router.push({ name: "checkout" });
     },
   },

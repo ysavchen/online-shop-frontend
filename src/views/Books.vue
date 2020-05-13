@@ -10,14 +10,16 @@
               <v-card-title primary-title>
                 <div>
                   <p class="subtitle-2" style="height: 35px">{{ book.title }}</p>
-                  <div class="body-2">by {{book.author}}</div>
-                  <div class="body-2">${{book.price}}</div>
                 </div>
               </v-card-title>
+              <v-card-subtitle>
+                <div class="body-2">by {{book.author}}</div>
+                <div class="body-2">${{book.price}}</div>
+              </v-card-subtitle>
 
               <v-card-actions>
                 <v-btn outlined small @click="details(book.id)">Details</v-btn>
-                <v-btn outlined small @click="addToCart(book.id)">Add to cart</v-btn>
+                <v-btn outlined small @click="addToCart(book)">Add to cart</v-btn>
               </v-card-actions>
             </v-card>
           </v-col>

@@ -1,51 +1,60 @@
 <template>
   <v-container>
-    <h2 class="display-2">Basket checkout</h2>
-
-    <form action>
-      <v-layout>
-        <v-flex x6>
-          <strong>Payment address</strong>
-          <v-text-field label="Name"></v-text-field>
-          <v-text-field label="Address"></v-text-field>
-          <v-text-field label="Zipcode"></v-text-field>
-          <v-text-field label="City"></v-text-field>
-          <v-text-field label="Phone"></v-text-field>
-          <v-text-field label="E-mail"></v-text-field>
-
-          <v-checkbox v-model="delivery_address" label="Orther delivery address"></v-checkbox>
-        </v-flex>
-        <v-flex x6>
-          <strong>Delivery address</strong>
-          <div v-if="delivery_address">
+    <div></div>
+    <div>
+      <v-row>
+        <v-col>
+          <form action>
+            <strong>Delivery address</strong>
             <v-text-field label="Name"></v-text-field>
             <v-text-field label="Address"></v-text-field>
             <v-text-field label="Zipcode"></v-text-field>
             <v-text-field label="City"></v-text-field>
-          </div>
-          <div v-else>
-            <v-alert
-              type="info"
-              :value="true"
-            >The delivery address is the same as the payment address</v-alert>
-          </div>
-        </v-flex>
-      </v-layout>
-    </form>
-
-    <hr />
-
-    <v-btn color="success" lager style="float: right;">Complete order</v-btn>
+            <v-text-field label="Phone"></v-text-field>
+            <v-text-field label="E-mail"></v-text-field>
+          </form>
+        </v-col>
+        <v-col>
+          <v-list>
+            <v-list-item-group>
+              <template v-for="book in cart">
+                  <v-list-item :key="book.id">
+                    <v-list-item-avatar left tile size="65">
+                      <v-img :src="book.image"></v-img>
+                    </v-list-item-avatar>
+                    <v-list-item-content>
+                      <v-list-item-title>{{book.title }}</v-list-item-title>
+                      <v-list-item-subtitle>by {{book.author}}</v-list-item-subtitle>
+                      <v-list-item-subtitle>${{book.price}}</v-list-item-subtitle>
+                    </v-list-item-content>
+                    <v-list-item-action>
+                      <v-btn icon @click="deleteFromCart(book)">
+                        <v-icon color="red">mdi-close</v-icon>
+                      </v-btn>
+                    </v-list-item-action>
+                  </v-list-item>
+              </template>
+            </v-list-item-group>
+          </v-list>
+        </v-col>
+      </v-row>
+    </div>
   </v-container>
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
   name: "Checkout",
-  data() {
-    return {
-      delivery_address: false
-    };
+  data: () => ({}),
+  computed: {
+    ...mapGetters(["cart"])
+  },
+  methods: {
+    deleteFromCart(book) {
+      this.$store.dispatch("deleteFromCart", book);
+    }
   }
 };
 </script>
