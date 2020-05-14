@@ -75,10 +75,50 @@
     {
       "id": 1010,
       "title": "Down to Earth: Laid-back Interiors for Modern Living",
-      "author": "Stephane Bern",
+      "author": "Lauren Liess",
       "description": "Down to Earth picks up right where Lauren Liess’s critically acclaimed Habitat left off. While Habitat walked readers through the decorating process step-by-step, Liess’s latest title takes a step beyond the basics and invites readers to incorporate the main components of her familiar design aesthetic: nature, easy living, and approachability. With evocative photos and substantive design advice, Down to Earth focuses on creating a lifestyle that inspires creativity and functionality.",
       "price": 20.15,
       "image": "/images/down_to_earth.jpg"
+    },
+    {
+      "id": 1011,
+      "title": "Travel Home: Design with a Global Spirit",
+      "author": "Caitlin Flemming",
+      "description": "A road map for bringing far-flung design ideas back home, Travel Home shows us how to curate interiors that reflect our favorite places and experiences in ways that are beautiful and authentic. Touring the homes of leaders in global design who share a deep affection for travel, the book explores interiors with influences as widespread as Marrakesh, Paris, Cuba, Tokyo, Portugal, and beyond. Vivid photography is supplemented with insightful essays, interviews, and hardworking tips for cultivating your own global home. For globetrotters and armchair travelers alike, Travel Home showcases the interplay between travel and design, revealing how we can take inspiration from the beauty we experience in the world and bring it into our everyday lives.",
+      "price": 26.49,
+      "image": "/images/travel_home.jpg"
+    },
+    {
+      "id": 1012,
+      "title": "Atmosphere: the seven elements of great design",
+      "author": "James Howard",
+      "description": "Jim Howard creates luxe yet comfortable homes for sophisticated clients around the country. His design work is known for the sort of evocative atmosphere that characterizes the world’s great spaces. “Atmosphere” is the magic of a place, the embodiment of all its power to capture your attention and embrace you—some might call it the “wow factor.” But even as it excites, atmosphere also soothes, offering an overall feeling of well-being and calm. Howard wrote this book to convey all he has learned about crafting atmosphere at home, wherever that home may be, whatever aesthetic it might have. Doing so isn’t just a matter of rules or formulas; it is a science as much as an art, which Jim shares in a dozen captivating chapters.",
+      "price": 31.82,
+      "image": "/images/atmosphere.jpg"
+    },
+    {
+      "id": 1013,
+      "title": "The Kinfolk Home: Interiors for Slow Living",
+      "author": "Nathan Williams",
+      "description": "The Kinfolk Home takes readers inside 35 homes around the world, from the United States, Scandinavia, Japan, and beyond. Some have constructed modern urban homes from blueprints, while others nurture their home’s long history. What all of these spaces have in common is that they’ve been put together carefully, slowly, and with great intention. Featuring inviting photographs and insightful profiles, interviews, and essays, each home tour is guaranteed to inspire.",
+      "price": 24.79,
+      "image": "/images/kinfolk_home.jpg"
+    },
+    {
+      "id": 1014,
+      "title": "Monochrome Home: Elegant Interiors in Black and White",
+      "author": "Hilary Robertson",
+      "description": "Decorating in black and white is perennially popular and eternally chic. Hilary Robertson demonstrates how, whether used alone or together, these contrasting shades can create dramatic effects at home, from the classic to the eclectic.",
+      "price": 25.00,
+      "image": "/images/monochrome_home.jpg"
+    },
+    {
+      "id": 1015,
+      "title": "Pacific Natural: Simple Seasonal Entertaining",
+      "author": "Jenni Kayne",
+      "description": "Jenni Kayne embodies an effortless aesthetic, where natural beauty is found in every detail. Pacific Natural illustrates Jenni's conscious way of living through personal anecdotes and tips with Jenni's home state of California serving as the backdrop. Organized by season, this entertaining book is your guide to creating special moments with family and friends. Each chapter includes tabletop ideas, simple crafts, tips for keeping a stocked kitchen and pantry, what to plant in your garden, and healthy, delicious recipes. From an apple harvest dinner and at-home herb drying in the fall, cocktail parties andDIY gift ideas in the winter, flower arranging in the spring and a beach picnic in the summer, Jenni shares her philosophy for creating traditions and living mindfully all year long.",
+      "price": 49.94,
+      "image": "/images/pacific_natural.jpg"
     }
   ]
 }
