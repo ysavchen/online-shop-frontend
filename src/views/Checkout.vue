@@ -27,9 +27,9 @@
                         <v-img :src="book.image"></v-img>
                       </v-list-item-avatar>
                       <v-list-item-content>
-                        <v-list-item-title>{{book.title }}</v-list-item-title>
-                        <v-list-item-subtitle>by {{book.author}}</v-list-item-subtitle>
-                        <v-list-item-subtitle>${{book.price}}</v-list-item-subtitle>
+                        <v-list-item-title>{{ book.title }}</v-list-item-title>
+                        <v-list-item-subtitle>by {{ book.author }}</v-list-item-subtitle>
+                        <v-list-item-subtitle>${{ book.price }}</v-list-item-subtitle>
                       </v-list-item-content>
                       <v-list-item-action>
                         <v-btn icon @click="deleteFromCart(book)">
@@ -57,10 +57,10 @@ import { mapGetters } from "vuex";
 
 export default {
   name: "Checkout",
-  data: () => ({}),
   computed: {
     ...mapGetters(["cart"]),
     total() {
+      //todo: fix counting
       let totalPrice = 0.0;
       for (const book of this.cart) {
         totalPrice += book.price;

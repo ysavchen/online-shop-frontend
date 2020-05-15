@@ -13,8 +13,8 @@
                 </div>
               </v-card-title>
               <v-card-subtitle>
-                <div class="body-2">by {{book.author}}</div>
-                <div class="body-2">${{book.price}}</div>
+                <div class="body-2">by {{ book.author }}</div>
+                <div class="body-2">${{ book.price }}</div>
               </v-card-subtitle>
 
               <v-card-actions>
@@ -34,20 +34,19 @@ import { mapGetters } from "vuex";
 
 export default {
   name: "Books",
-  data: () => ({
-  }),
   methods: {
     details(bookId) {
       this.$router.push({ name: "bookDetails", params: { id: bookId } });
     },
     addToCart(book) {
-      this.$store.dispatch('addToCart', book);
-    },
+      this.$store.dispatch("addToCart", book);
+    }
   },
   computed: {
-    ...mapGetters(["books"]),
+    ...mapGetters(["books"])
   },
   created() {
+    //todo: get data here and pass to store
     this.$store.dispatch("initStore");
   }
 };
