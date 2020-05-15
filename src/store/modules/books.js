@@ -10,9 +10,9 @@ const getters = {
 
 const actions = {
     initStore: ({ commit }) => {
-        axios.get('books.json')
+        axios.get('/api/books')
             .then((response) => {
-                commit('SET_STORE', response.data.books)
+                commit('SET_STORE', response.data)
             });
     }
 };
