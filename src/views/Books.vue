@@ -46,8 +46,7 @@ export default {
     ...mapGetters(["books"])
   },
   created() {
-    //todo: get data here and pass to store
-    this.$store.dispatch("initStore");
+    this.$store.dispatch("getBooks");
   }
 };
 </script>

@@ -35,7 +35,7 @@ export default {
   name: "Login",
   methods: {
     submit() {
-      // submit form to server/API here...
+      //submit to server
     },
   },
 };

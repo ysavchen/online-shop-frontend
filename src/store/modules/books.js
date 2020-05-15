@@ -1,25 +1,35 @@
 import axios from 'axios'
 
 const state = {
-    books: {}
+    books: []
 };
 
 const getters = {
-    books: state => state.books
+    books: state => state.books,
+    bookWithId: state => id => {
+        return state.books.find(book => book.id == id)
+    }
 };
 
 const actions = {
-    initStore: ({ commit }) => {
+    getBooks: ({ commit }) => {
         axios.get('/api/books')
             .then((response) => {
-                commit('SET_STORE', response.data)
+                commit('ADD_BOOKS', response.data)
             });
+    },
+    getBookById: async ({ commit }, id) => {
+        const response = await axios.get('/api/books/' + id);
+        commit('ADD_BOOK', response.data);
     }
 };
 
 const mutations = {
-    'SET_STORE'(state, books) {
+    'ADD_BOOKS'(state, books) {
         state.books = books;
+    },
+    'ADD_BOOK'(state, book) {
+        state.books.push(book);
     }
 };
 

@@ -73,7 +73,7 @@ export default {
       this.$store.dispatch("deleteFromCart", book);
     },
     submit() {
-      // submit form to server/API here...
+      //submit to server
     }
   }
 };
