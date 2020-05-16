@@ -7,7 +7,7 @@ const state = {
 const getters = {
     books: state => state.books,
     bookWithId: state => id => {
-        return state.books.find(book => book.id == id)
+        return state.books.find(book => book.id === Number.parseInt(id))
     }
 };
 

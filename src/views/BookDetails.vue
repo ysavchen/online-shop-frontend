@@ -49,7 +49,7 @@ export default {
   created() {
     const id = this.$route.params.id;
     const storedBook = this.bookWithId(id);
-    if (storedBook != undefined) {
+    if (storedBook !== undefined) {
       this.book = storedBook;
     } else {
       this.$store.dispatch('getBookById', id).then(() => {
