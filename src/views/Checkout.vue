@@ -2,7 +2,7 @@
   <v-container fluid>
     <div>
       <v-row justify="center" class="mt-5">
-        <v-col class="ml-5 mr-5" cols="5">
+        <v-col class="mx-5" cols="5">
           <form action>
             <p class="title">Delivery address</p>
             <v-text-field label="Name"></v-text-field>
@@ -15,10 +15,10 @@
             <v-btn color="success" @click="submit">Submit</v-btn>
           </div>
         </v-col>
-        <v-col class="ml-5 mr-5" cols="5">
+        <v-col class="mx-5" cols="5">
           <div v-if="total > 0">
             <v-card outlined>
-              <v-list class="pt-0 pb-0">
+              <v-list class="py-0">
                 <v-list-item-group v-for="book in cart" :key="book.id">
                   <template>
                     <v-list-item>
