@@ -3,14 +3,14 @@
     <div>
       <v-row justify="center" class="mt-5">
         <v-col class="mx-5" cols="5">
-          <form action>
+          <v-form action>
             <p class="title">Delivery address</p>
             <v-text-field label="Name"></v-text-field>
             <v-text-field label="Address"></v-text-field>
             <v-text-field label="Zipcode"></v-text-field>
             <v-text-field label="Phone"></v-text-field>
             <v-text-field label="E-mail"></v-text-field>
-          </form>
+          </v-form>
           <div>
             <v-btn color="success" @click="submit">Submit</v-btn>
           </div>
