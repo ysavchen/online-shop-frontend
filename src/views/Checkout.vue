@@ -1,6 +1,5 @@
 <template>
   <v-container>
-    <div></div>
     <div>
       <v-row>
         <v-col>
@@ -19,10 +18,10 @@
         <v-col>
           <div v-if="total > 0">
             <v-card outlined>
-              <v-list>
-                <v-list-item-group>
-                  <template v-for="book in cart">
-                    <v-list-item :key="book.id">
+              <v-list class="pt-0 pb-0">
+                <v-list-item-group v-for="book in cart" :key="book.id">
+                  <template>
+                    <v-list-item>
                       <v-list-item-avatar left tile size="65">
                         <v-img :src="book.image"></v-img>
                       </v-list-item-avatar>
@@ -37,6 +36,7 @@
                         </v-btn>
                       </v-list-item-action>
                     </v-list-item>
+                    <v-divider v-show="!isLastBook(book)"></v-divider>
                   </template>
                 </v-list-item-group>
               </v-list>
@@ -53,13 +53,13 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
-import currency from 'currency.js';
+import { mapGetters } from "vuex";
+import currency from "currency.js";
 
 export default {
-  name: 'Checkout',
+  name: "Checkout",
   computed: {
-    ...mapGetters(['cart']),
+    ...mapGetters(["cart"]),
     total() {
       let totalPrice = currency(0.0);
       for (const book of this.cart) {
@@ -70,7 +70,10 @@ export default {
   },
   methods: {
     deleteFromCart(book) {
-      this.$store.dispatch('deleteFromCart', book);
+      this.$store.dispatch("deleteFromCart", book);
+    },
+    isLastBook(book) {
+      return book === this.cart[this.cart.length - 1];
     },
     submit() {
       //submit to server
