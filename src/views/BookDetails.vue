@@ -52,9 +52,9 @@ export default {
     if (storedBook !== undefined) {
       this.book = storedBook;
     } else {
-      this.$store.dispatch('getBookById', id).then(() => {
-        this.book = this.bookWithId(id);
-      });
+      this.$store.dispatch('getBookById', id)
+        .then(() => this.book = this.bookWithId(id))
+        .catch(error => console.error(error));
     }
   }
 };
