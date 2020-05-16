@@ -54,16 +54,16 @@
 
 <script>
 import { mapGetters } from 'vuex';
+import currency from 'currency.js';
 
 export default {
   name: 'Checkout',
   computed: {
     ...mapGetters(['cart']),
     total() {
-      //todo: fix counting
-      let totalPrice = 0.0;
+      let totalPrice = currency(0.0);
       for (const book of this.cart) {
-        totalPrice += book.price;
+        totalPrice = totalPrice.add(book.price);
       }
       return totalPrice;
     }
