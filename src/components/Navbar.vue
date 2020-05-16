@@ -20,12 +20,12 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters } from 'vuex';
 
 export default {
-  name: "Navbar",
+  name: 'Navbar',
   data: () => ({
-    sitename: "Online Store",
+    sitename: 'Online Store',
   }),
   methods: {
     registerForm() {
@@ -39,7 +39,7 @@ export default {
     },
   },
   computed: {
-    ...mapGetters(["cart"]),
+    ...mapGetters(['cart']),
     cartItemCount() {
       return this.cart.length;
     }

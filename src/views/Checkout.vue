@@ -53,12 +53,12 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters } from 'vuex';
 
 export default {
-  name: "Checkout",
+  name: 'Checkout',
   computed: {
-    ...mapGetters(["cart"]),
+    ...mapGetters(['cart']),
     total() {
       //todo: fix counting
       let totalPrice = 0.0;
@@ -70,7 +70,7 @@ export default {
   },
   methods: {
     deleteFromCart(book) {
-      this.$store.dispatch("deleteFromCart", book);
+      this.$store.dispatch('deleteFromCart', book);
     },
     submit() {
       //submit to server

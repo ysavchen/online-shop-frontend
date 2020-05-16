@@ -60,7 +60,7 @@
 
 <script>
 export default {
-  name: "Register",
+  name: 'Register',
   computed: {
     passwordMatch() {
       return () => this.password === this.verify || "Password must match";
