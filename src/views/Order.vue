@@ -10,6 +10,18 @@
       </v-card-text>
       <v-card-text>
         <div>Books:</div>
+        <v-list>
+          <v-list-item-group v-for="book in order.books" :key="book.id">
+            <v-list-item>
+              <v-list-item-content>
+                <v-list-item-subtitle>{{ book.title }} - ${{ book.price }}</v-list-item-subtitle>
+              </v-list-item-content>
+            </v-list-item>
+          </v-list-item-group>
+        </v-list>
+        <div>
+          <p class="Subtitle-1 ml-1 mt-1">Total: ${{ total }}</p>
+        </div>
       </v-card-text>
     </v-card>
   </v-container>
@@ -17,18 +29,18 @@
 
 <script>
 import { mapGetters } from "vuex";
+import commons from "../mixins/commons";
 
 export default {
   name: "Order",
   data: () => ({
     orderNumber: 0
   }),
+  mixins: [commons],
   computed: {
-    ...mapGetters(["order"])
-  },
-  methods: {
-    getRandomInt(min, max) {
-      return Math.floor(Math.random() * (max - min)) + min;
+    ...mapGetters(["order"]),
+    total: function() {
+      return this.totalPrice(this.order.books);
     }
   },
   created() {

@@ -54,7 +54,7 @@
 
 <script>
 import { mapGetters } from "vuex";
-import currency from "currency.js";
+import commons from "../mixins/commons";
 
 export default {
   name: "Checkout",
@@ -67,14 +67,11 @@ export default {
       email: ""
     }
   }),
+  mixins: [commons],
   computed: {
     ...mapGetters(["cart"]),
-    total() {
-      let totalPrice = currency(0.0);
-      for (const book of this.cart) {
-        totalPrice = totalPrice.add(book.price);
-      }
-      return totalPrice;
+    total: function() {
+      return this.totalPrice(this.cart);
     }
   },
   methods: {
@@ -87,7 +84,7 @@ export default {
     submit() {
       this.$store.dispatch("saveOrder", {
         delivery: this.delivery,
-        books: this.cart
+        books: Array.from(this.cart)
       });
       this.$store.dispatch("emptyCart");
       this.$router.push({ name: "order" });
