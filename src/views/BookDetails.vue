@@ -24,10 +24,10 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapGetters } from "vuex";
 
 export default {
-  name: 'BookDetails',
+  name: "BookDetails",
   data: () => ({
     book: {
       id: 0,
@@ -39,7 +39,7 @@ export default {
     }
   }),
   computed: {
-    ...mapGetters(['bookWithId'])
+    ...mapGetters(["bookWithId"])
   },
   watch: {
     book: function(bookData) {
@@ -52,9 +52,10 @@ export default {
     if (storedBook !== undefined) {
       this.book = storedBook;
     } else {
-      this.$store.dispatch('getBookById', id)
-        .then(() => this.book = this.bookWithId(id))
-        .catch(error => console.error(error));
+      this.$store
+        .dispatch("getBookById", id)
+        .then(() => (this.book = this.bookWithId(id)))
+        .catch(error => console.error(error.name + ": " + error.response.data.message));
     }
   }
 };
