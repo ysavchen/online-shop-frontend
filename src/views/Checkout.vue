@@ -5,11 +5,11 @@
         <v-col class="mx-5" cols="5">
           <v-form action>
             <p class="title">Delivery address</p>
-            <v-text-field label="Name"></v-text-field>
-            <v-text-field label="Address"></v-text-field>
-            <v-text-field label="Zipcode"></v-text-field>
-            <v-text-field label="Phone"></v-text-field>
-            <v-text-field label="E-mail"></v-text-field>
+            <v-text-field label="Name" v-model="delivery.name"></v-text-field>
+            <v-text-field label="Address" v-model="delivery.address"></v-text-field>
+            <v-text-field label="Zipcode" v-model="delivery.zipcode"></v-text-field>
+            <v-text-field label="Phone" v-model="delivery.phone"></v-text-field>
+            <v-text-field label="E-mail" v-model="delivery.email"></v-text-field>
           </v-form>
           <div>
             <v-btn color="success" @click="submit">Submit</v-btn>
@@ -58,6 +58,15 @@ import currency from "currency.js";
 
 export default {
   name: "Checkout",
+  data: () => ({
+    delivery: {
+      name: "",
+      address: "",
+      zipcode: "",
+      phone: "",
+      email: ""
+    }
+  }),
   computed: {
     ...mapGetters(["cart"]),
     total() {
@@ -76,7 +85,12 @@ export default {
       return book === this.cart[this.cart.length - 1];
     },
     submit() {
-      //submit to server
+      this.$store.dispatch("saveOrder", {
+        delivery: this.delivery,
+        books: this.cart
+      });
+      this.$store.dispatch("emptyCart");
+      this.$router.push({ name: "order" });
     }
   }
 };

@@ -5,6 +5,7 @@ import Login from '@/views/Login.vue'
 import Register from '@/views/Register.vue'
 import Checkout from '@/views/Checkout.vue'
 import BookDetails from '@/views/BookDetails.vue'
+import Order from '@/views/Order.vue'
 
 Vue.use(VueRouter)
 
@@ -33,6 +34,11 @@ const routes = [
     path: '/checkout',
     name: 'checkout',
     component: Checkout
+  },
+  {
+    path: '/order',
+    name: 'order',
+    component: Order
   },
   {
     path: '*',

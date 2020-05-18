@@ -12,6 +12,9 @@ const actions = {
     },
     deleteFromCart: ({ commit }, book) => {
         commit('DELETE_FROM_CART', book);
+    },
+    emptyCart: ({ commit }) => {
+        commit('EMPTY_CART');
     }
 };
 
@@ -21,7 +24,10 @@ const mutations = {
     },
     'DELETE_FROM_CART'(state, book) {
         state.cart.splice(state.cart.indexOf(book), 1);
-    }
+    },
+    'EMPTY_CART'(state) {
+        state.cart = [];
+    },
 };
 
 export default {
