@@ -53,42 +53,43 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
-import commons from "../mixins/commons";
+import { mapGetters } from 'vuex'
+import commons from '@/mixins/commons'
 
 export default {
-  name: "Checkout",
+  name: 'Checkout',
   data: () => ({
     delivery: {
-      name: "",
-      address: "",
-      zipcode: "",
-      phone: "",
-      email: ""
+      name: '',
+      address: '',
+      zipcode: '',
+      phone: '',
+      email: ''
     }
   }),
   mixins: [commons],
   computed: {
-    ...mapGetters(["cart"]),
+    ...mapGetters(['cart']),
     total: function() {
-      return this.totalPrice(this.cart);
+      return this.totalPrice(this.cart)
     }
   },
   methods: {
     deleteFromCart(book) {
-      this.$store.dispatch("deleteFromCart", book);
+      this.$store.dispatch('deleteFromCart', book)
     },
     isLastBook(book) {
-      return book === this.cart[this.cart.length - 1];
+      return book === this.cart[this.cart.length - 1]
     },
     submit() {
-      this.$store.dispatch("saveOrder", {
+      const order = {
         delivery: this.delivery,
         books: Array.from(this.cart)
-      });
-      this.$store.dispatch("emptyCart");
-      this.$router.push({ name: "order" });
+      }
+      this.$store.dispatch('saveOrder', order)
+      this.$store.dispatch('emptyCart')
+      this.$router.push({ name: 'order' })
     }
   }
-};
+}
 </script>

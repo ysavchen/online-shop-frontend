@@ -28,25 +28,25 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
-import commons from "../mixins/commons";
+import { mapGetters } from 'vuex'
+import commons from '@/mixins/commons'
 
 export default {
-  name: "Order",
+  name: 'Order',
   data: () => ({
     orderNumber: 0
   }),
   mixins: [commons],
   computed: {
-    ...mapGetters(["order"]),
+    ...mapGetters(['order']),
     total: function() {
-      return this.totalPrice(this.order.books);
+      return this.totalPrice(this.order.books)
     }
   },
   created() {
-    const min = 10000;
-    const max = 1000000;
-    this.orderNumber = this.getRandomInt(min, max);
+    const min = 10000
+    const max = 1000000
+    this.orderNumber = this.getRandomInt(min, max)
   }
-};
+}
 </script>

@@ -31,23 +31,23 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters } from 'vuex'
 
 export default {
-  name: "Books",
+  name: 'Books',
   methods: {
     details(bookId) {
-      this.$router.push({ name: "bookDetails", params: { id: bookId } });
+      this.$router.push({ name: 'bookDetails', params: { id: bookId } })
     },
     addToCart(book) {
-      this.$store.dispatch("addToCart", book);
+      this.$store.dispatch('addToCart', book)
     }
   },
   computed: {
-    ...mapGetters(["books"])
+    ...mapGetters(['books'])
   },
   created() {
-    this.$store.dispatch("getBooks");
+    this.$store.dispatch('getBooks')
   }
-};
+}
 </script>

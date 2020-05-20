@@ -24,32 +24,33 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters } from 'vuex'
 
 export default {
-  name: "BookDetails",
+  name: 'BookDetails',
   data: () => ({
     book: {},
     display: false
   }),
   computed: {
-    ...mapGetters(["bookWithId"])
+    ...mapGetters(['bookWithId'])
   },
   created() {
-    const id = this.$route.params.id;
-    this.book = this.bookWithId(id);
+    const id = this.$route.params.id
+    this.book = this.bookWithId(id)
     if (this.book !== undefined) {
-      this.display = true;
+      this.display = true
     } else {
-      this.$store.dispatch("getBookById", id)
+      this.$store
+        .dispatch('getBookById', id)
         .then(() => {
-          this.book = this.bookWithId(id);
-          this.display = true;
+          this.book = this.bookWithId(id)
+          this.display = true
         })
         .catch(error =>
-          console.error(error.name + ": " + error.response.data.message)
-        );
+          console.error(`${error.name}: ${error.response.data.message}`)
+        )
     }
   }
-};
+}
 </script>

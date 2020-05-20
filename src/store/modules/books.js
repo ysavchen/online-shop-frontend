@@ -2,36 +2,36 @@ import axios from 'axios'
 
 const state = {
     books: []
-};
+}
 
 const getters = {
     books: state => state.books,
     bookWithId: state => id => {
         return state.books.find(book => book.id === Number.parseInt(id))
     }
-};
+}
 
 const actions = {
     getBooks: ({ commit }) => {
         axios.get('/api/books')
             .then((response) => {
                 commit('ADD_BOOKS', response.data)
-            });
+            })
     },
     getBookById: async ({ commit }, id) => {
-        const response = await axios.get('/api/books/' + id);
-        commit('ADD_BOOK', response.data);
+        const response = await axios.get(`/api/books/${id}`)
+        commit('ADD_BOOK', response.data)
     }
-};
+}
 
 const mutations = {
     'ADD_BOOKS'(state, books) {
-        state.books = books;
+        state.books = books
     },
     'ADD_BOOK'(state, book) {
-        state.books.push(book);
+        state.books.push(book)
     }
-};
+}
 
 export default {
     state,

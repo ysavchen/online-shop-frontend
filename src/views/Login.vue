@@ -8,8 +8,15 @@
             <v-spacer></v-spacer>
           </v-toolbar>
           <v-card-text>
-            <v-form>
-              <v-text-field label="Login" name="login" prepend-icon="mdi-account" type="text"></v-text-field>
+            <v-form ref="form">
+              <v-text-field
+                label="Login"
+                name="login"
+                prepend-icon="mdi-account"
+                type="text"
+                v-model="email"
+                :rules="[rules.required, rules.emailValidity]"
+              ></v-text-field>
 
               <v-text-field
                 id="password"
@@ -17,6 +24,7 @@
                 name="password"
                 prepend-icon="mdi-lock"
                 type="password"
+                :rules="[rules.required]"
               ></v-text-field>
             </v-form>
           </v-card-text>
@@ -31,12 +39,21 @@
 </template>
 
 <script>
+import formRules from '@/mixins/formRules'
+
 export default {
   name: 'Login',
+  mixins: [formRules],
   methods: {
+    data: () => ({
+      email: '',
+      password: ''
+    }),
     submit() {
-      //submit to server
-    },
-  },
-};
+      if (this.$refs.form.validate()) {
+        // submit form to server/API
+      }
+    }
+  }
+}
 </script>

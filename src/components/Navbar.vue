@@ -20,29 +20,29 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'Navbar',
   data: () => ({
-    sitename: 'Online Store',
+    sitename: 'Online Store'
   }),
   methods: {
     registerForm() {
-      this.$router.push({ name: "register" });
+      this.$router.push({ name: 'register' })
     },
     loginForm() {
-      this.$router.push({ name: "login" });
+      this.$router.push({ name: 'login' })
     },
     openCheckout() {
-      this.$router.push({ name: "checkout" });
-    },
+      this.$router.push({ name: 'checkout' })
+    }
   },
   computed: {
     ...mapGetters(['cart']),
     cartItemCount() {
-      return this.cart.length;
+      return this.cart.length
     }
   }
-};
+}
 </script>

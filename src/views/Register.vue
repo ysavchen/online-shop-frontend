@@ -4,7 +4,7 @@
       <v-col cols="12" sm="8" md="5">
         <v-card class="elevation-12">
           <v-card-text>
-            <v-form>
+            <v-form ref="form">
               <v-text-field
                 v-model="firstName"
                 :rules="[rules.required]"
@@ -21,12 +21,17 @@
                 required
               ></v-text-field>
 
-              <v-text-field v-model="email" :rules="emailRules" label="E-mail" required></v-text-field>
+              <v-text-field
+                v-model="email"
+                :rules="[rules.required, rules.emailValidity]"
+                label="E-mail"
+                required
+              ></v-text-field>
 
               <v-text-field
                 v-model="password"
                 :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
-                :rules="[rules.required, rules.min]"
+                :rules="[rules.required, rules.minChars]"
                 :type="show1 ? 'text' : 'password'"
                 name="input-10-1"
                 label="Password"
@@ -59,35 +64,31 @@
 </template>
 
 <script>
+import formRules from '@/mixins/formRules'
+
 export default {
   name: 'Register',
+  mixins: [formRules],
   computed: {
     passwordMatch() {
-      return () => this.password === this.verify || "Password must match";
+      return () => this.password === this.verify || 'Password must match'
     }
   },
   methods: {
     submit() {
-      // submit form to server/API here...
-    },
+      if (this.$refs.form.validate()) {
+        // submit form to server/API
+      }
+    }
   },
   data: () => ({
     valid: true,
-    firstName: "",
-    lastName: "",
-    email: "",
-    password: "",
-    verify: "",
-    emailRules: [
-      v => !!v || "Required",
-      v => /.+@.+\..+/.test(v) || "E-mail must be valid"
-    ],
-
-    show1: false,
-    rules: {
-      required: value => !!value || "Required.",
-      min: v => (v && v.length >= 8) || "Min 8 characters"
-    }
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: '',
+    verify: '',
+    show1: false
   })
-};
+}
 </script>
