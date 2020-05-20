@@ -17,9 +17,8 @@
                 <div class="body-2">${{ book.price }}</div>
               </v-card-subtitle>
 
-              <v-card-actions class="mx-1">
+              <v-card-actions>
                 <v-btn outlined small @click="details(book.id)">Details</v-btn>
-                <v-spacer></v-spacer>
                 <v-btn outlined small @click="addToCart(book)">Add to cart</v-btn>
               </v-card-actions>
             </v-card>
