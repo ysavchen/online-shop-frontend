@@ -84,11 +84,12 @@ export default {
     submit() {
       const order = {
         delivery: this.delivery,
-        books: Array.from(this.cart)
+        books: this.cart
       }
-      this.$store.dispatch('saveOrder', order)
-      this.$store.dispatch('emptyCart')
-      this.$router.push({ name: 'order' })
+      this.$store.dispatch('saveOrder', order).then(() => {
+        this.$store.dispatch('emptyCart')
+        this.$router.push({ name: 'order' })
+      })
     }
   }
 }

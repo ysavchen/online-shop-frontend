@@ -1,3 +1,5 @@
+import axios from 'axios'
+
 const state = {
     order: {}
 }
@@ -7,8 +9,9 @@ const getters = {
 }
 
 const actions = {
-    saveOrder: ({ commit }, order) => {
-        commit('SAVE_ORDER', order)
+    saveOrder: async ({ commit }, order) => {
+        const response = await axios.post('/api/orders', order)
+        commit('SAVE_ORDER', response.data)
     }
 }
 

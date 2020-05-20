@@ -44,9 +44,7 @@ export default {
     }
   },
   created() {
-    const min = 10000
-    const max = 1000000
-    this.orderNumber = this.getRandomInt(min, max)
+    this.orderNumber = this.order.id
   }
 }
 </script>
