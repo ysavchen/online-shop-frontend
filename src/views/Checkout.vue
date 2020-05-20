@@ -3,7 +3,7 @@
     <div>
       <v-row justify="center" class="mt-5">
         <v-col class="mx-5" cols="5">
-          <v-form action>
+          <v-form ref="form">
             <p class="title">Delivery address</p>
             <v-text-field label="Name" v-model="delivery.name" :rules="[rules.required]"></v-text-field>
             <v-text-field label="Address" v-model="delivery.address" :rules="[rules.required]"></v-text-field>
@@ -83,14 +83,16 @@ export default {
       return book === this.cart[this.cart.length - 1]
     },
     submit() {
-      const order = {
-        delivery: this.delivery,
-        books: this.cart
+      if (this.$refs.form.validate()) {
+        const order = {
+          delivery: this.delivery,
+          books: this.cart
+        }
+        this.$store.dispatch('saveOrder', order).then(() => {
+          this.$store.dispatch('emptyCart')
+          this.$router.push({ name: 'order' })
+        })
       }
-      this.$store.dispatch('saveOrder', order).then(() => {
-        this.$store.dispatch('emptyCart')
-        this.$router.push({ name: 'order' })
-      })
     }
   }
 }
