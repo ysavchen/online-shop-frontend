@@ -5,11 +5,11 @@
         <v-col class="mx-5" cols="5">
           <v-form action>
             <p class="title">Delivery address</p>
-            <v-text-field label="Name" v-model="delivery.name"></v-text-field>
-            <v-text-field label="Address" v-model="delivery.address"></v-text-field>
-            <v-text-field label="Zipcode" v-model="delivery.zipcode"></v-text-field>
-            <v-text-field label="Phone" v-model="delivery.phone"></v-text-field>
-            <v-text-field label="E-mail" v-model="delivery.email"></v-text-field>
+            <v-text-field label="Name" v-model="delivery.name" :rules="[rules.required]"></v-text-field>
+            <v-text-field label="Address" v-model="delivery.address" :rules="[rules.required]"></v-text-field>
+            <v-text-field label="Zipcode" v-model="delivery.zipcode" :rules="[rules.required]"></v-text-field>
+            <v-text-field label="Phone" v-model="delivery.phone" :rules="[rules.required]"></v-text-field>
+            <v-text-field label="E-mail" v-model="delivery.email" :rules="[rules.required]"></v-text-field>
           </v-form>
           <div>
             <v-btn color="success" @click="submit">Submit</v-btn>
@@ -55,6 +55,7 @@
 <script>
 import { mapGetters } from 'vuex'
 import commons from '@/mixins/commons'
+import formRules from '@/mixins/formRules'
 
 export default {
   name: 'Checkout',
@@ -67,7 +68,7 @@ export default {
       email: ''
     }
   }),
-  mixins: [commons],
+  mixins: [commons, formRules],
   computed: {
     ...mapGetters(['cart']),
     total: function() {

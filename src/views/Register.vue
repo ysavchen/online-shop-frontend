@@ -10,7 +10,6 @@
                 :rules="[rules.required]"
                 label="First Name"
                 maxlength="20"
-                required
               ></v-text-field>
 
               <v-text-field
@@ -18,14 +17,12 @@
                 :rules="[rules.required]"
                 label="Last Name"
                 maxlength="20"
-                required
               ></v-text-field>
 
               <v-text-field
                 v-model="email"
                 :rules="[rules.required, rules.emailValidity]"
                 label="E-mail"
-                required
               ></v-text-field>
 
               <v-text-field

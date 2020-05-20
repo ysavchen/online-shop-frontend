@@ -1,29 +1,45 @@
 <template>
   <v-container>
-    <v-card outlined>
-      <v-card-title>
-        <v-icon color="green">mdi-check</v-icon>
-        <div class="ml-1">Order #{{ orderNumber }}</div>
-      </v-card-title>
-      <v-card-text>
-        <div>Delivery:</div>
-      </v-card-text>
-      <v-card-text>
-        <div>Books:</div>
-        <v-list>
-          <v-list-item-group v-for="book in order.books" :key="book.id">
-            <v-list-item>
-              <v-list-item-content>
-                <v-list-item-subtitle>{{ book.title }} - ${{ book.price }}</v-list-item-subtitle>
-              </v-list-item-content>
-            </v-list-item>
-          </v-list-item-group>
-        </v-list>
-        <div>
-          <p class="Subtitle-1 ml-1 mt-1">Total: ${{ total }}</p>
-        </div>
-      </v-card-text>
-    </v-card>
+    <v-row justify="center">
+      <v-col cols="8">
+        <v-card outlined>
+          <v-card-title>
+            <v-icon color="green">mdi-check</v-icon>
+            <div class="ml-1 black--text">Order #{{ orderNumber }}</div>
+          </v-card-title>
+          <v-divider class="mx-4"></v-divider>
+          <v-card-text>
+            <div class="font-weight-black">Delivery:</div>
+            <div>{{ order.delivery.name }}</div>
+            <div>{{ order.delivery.address }}</div>
+            <div>{{ order.delivery.zipcode }}</div>
+            <div>Tel: {{ order.delivery.phone }}</div>
+            <div>Email: {{ order.delivery.email }}</div>
+          </v-card-text>
+          <v-divider class="mx-4"></v-divider>
+          <v-card-text>
+            <div class="font-weight-black">Order summary:</div>
+            <v-list>
+              <v-list-item-group v-for="book in order.books" :key="book.id">
+                <v-list-item>
+                  <v-list-item-avatar left tile size="50">
+                    <v-img :src="book.image"></v-img>
+                  </v-list-item-avatar>
+                  <v-list-item-content>
+                    <div>{{ book.title }} - ${{ book.price }}</div>
+                  </v-list-item-content>
+                </v-list-item>
+              </v-list-item-group>
+            </v-list>
+            <div>
+              <p class="font-weight-black">Total: ${{ total }}</p>
+            </div>
+            <v-divider class="mx-4"></v-divider>
+            <div class="mt-5 text-center black--text">Thank you for order!</div>
+          </v-card-text>
+        </v-card>
+      </v-col>
+    </v-row>
   </v-container>
 </template>
 
