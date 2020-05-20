@@ -15,7 +15,6 @@
                 prepend-icon="mdi-account"
                 type="text"
                 v-model="email"
-                :rules="[rules.required, rules.emailValidity]"
               ></v-text-field>
 
               <v-text-field
@@ -24,7 +23,7 @@
                 name="password"
                 prepend-icon="mdi-lock"
                 type="password"
-                :rules="[rules.required]"
+                v-model="password"
               ></v-text-field>
             </v-form>
           </v-card-text>
@@ -39,11 +38,8 @@
 </template>
 
 <script>
-import formRules from '@/mixins/formRules'
-
 export default {
   name: 'Login',
-  mixins: [formRules],
   methods: {
     data: () => ({
       email: '',
