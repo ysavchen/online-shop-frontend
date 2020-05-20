@@ -1,5 +1,5 @@
 <template>
-  <div v-show="book.id != 0">
+  <div v-show="display">
     <v-container class="float-left">
       <v-row>
         <v-col sm="5">
@@ -29,31 +29,23 @@ import { mapGetters } from "vuex";
 export default {
   name: "BookDetails",
   data: () => ({
-    book: {
-      id: 0,
-      title: "",
-      description: "",
-      author: "",
-      image: "",
-      price: 0.0
-    }
+    book: {},
+    display: false
   }),
   computed: {
     ...mapGetters(["bookWithId"])
   },
-  watch: {
-    book: function(bookData) {
-      this.book = bookData;
-    }
-  },
   created() {
     const id = this.$route.params.id;
-    const storedBook = this.bookWithId(id);
-    if (storedBook !== undefined) {
-      this.book = storedBook;
+    this.book = this.bookWithId(id);
+    if (this.book !== undefined) {
+      this.display = true;
     } else {
       this.$store.dispatch("getBookById", id)
-        .then(() => (this.book = this.bookWithId(id)))
+        .then(() => {
+          this.book = this.bookWithId(id);
+          this.display = true;
+        })
         .catch(error =>
           console.error(error.name + ": " + error.response.data.message)
         );
