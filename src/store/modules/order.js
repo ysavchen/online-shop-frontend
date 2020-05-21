@@ -11,7 +11,8 @@ const getters = {
 const actions = {
     saveOrder: async ({ commit }, order) => {
         const response = await axios.post('/api/orders', order)
-        commit('SAVE_ORDER', response.data)
+        order.id = response.data.id
+        commit('SAVE_ORDER', order)
     }
 }
 
