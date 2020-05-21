@@ -8,7 +8,7 @@
             <v-spacer></v-spacer>
           </v-toolbar>
           <v-card-text>
-            <v-form ref="form">
+            <v-form>
               <v-text-field
                 label="Login"
                 name="login"
@@ -46,9 +46,7 @@ export default {
       password: ''
     }),
     submit() {
-      if (this.$refs.form.validate()) {
         // submit form to server/API
-      }
     }
   }
 }
