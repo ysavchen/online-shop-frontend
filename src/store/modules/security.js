@@ -12,7 +12,7 @@ const getters = {
 }
 
 const actions = {
-    register: async ({ commit }, user) => {
+    register: async ({ commit, dispatch }, user) => {
         const response = await axios({
             method: 'post',
             url: '/api/register',
@@ -21,9 +21,11 @@ const actions = {
         })
         commit('SET_TOKEN', response.data.token)
         commit('SET_USER', response.data.user)
+        dispatch('setLogoutTimer', response.data.tokenExpiration)
     },
-    login: async ({ commit }, user) => {
-        const response = await await axios({
+
+    login: async ({ commit, dispatch }, user) => {
+        const response = await axios({
             method: 'post',
             url: '/api/login',
             data: user,
@@ -31,11 +33,20 @@ const actions = {
         })
         commit('SET_TOKEN', response.data.token)
         commit('SET_USER', response.data.user)
+        dispatch('setLogoutTimer', response.data.tokenExpiration)
     },
+
     logout: ({ commit }) => {
         commit('SET_TOKEN', undefined)
         commit('SET_USER', undefined)
     },
+
+    setLogoutTimer({ commit }, tokenExpiration) {
+        setTimeout(() => {
+            commit('SET_TOKEN', undefined)
+            commit('SET_USER', undefined)
+        }, tokenExpiration)
+    }
 }
 
 const mutations = {
