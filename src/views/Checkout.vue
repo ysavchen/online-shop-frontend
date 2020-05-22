@@ -5,11 +5,10 @@
         <v-col class="mx-5" cols="5">
           <v-form ref="form">
             <p class="title">Delivery address</p>
-            <v-text-field label="Name" v-model="delivery.name" :rules="[rules.required]"></v-text-field>
-            <v-text-field label="Address" v-model="delivery.address" :rules="[rules.required]"></v-text-field>
-            <v-text-field label="Zipcode" v-model="delivery.zipcode" :rules="[rules.required]"></v-text-field>
-            <v-text-field label="Phone" v-model="delivery.phone" :rules="[rules.required]"></v-text-field>
-            <v-text-field label="E-mail" v-model="delivery.email" :rules="[rules.required]"></v-text-field>
+            <v-text-field label="Name" v-model="name" :rules="[rules.required]"></v-text-field>
+            <v-text-field label="Address" v-model="address" :rules="[rules.required]"></v-text-field>
+            <v-text-field label="Phone" v-model="phone" :rules="[rules.required]"></v-text-field>
+            <v-text-field label="E-mail" v-model="email" :rules="[rules.required]"></v-text-field>
           </v-form>
           <div>
             <v-btn color="success" @click="submit">Submit</v-btn>
@@ -60,13 +59,10 @@ import formRules from '@/mixins/formRules'
 export default {
   name: 'Checkout',
   data: () => ({
-    delivery: {
-      name: '',
-      address: '',
-      zipcode: '',
-      phone: '',
-      email: ''
-    }
+    name: '',
+    address: '',
+    phone: '',
+    email: ''
   }),
   mixins: [commons, formRules],
   computed: {
@@ -77,8 +73,8 @@ export default {
   },
   created() {
     if (this.user !== undefined) {
-      this.delivery.name = this.user.firstName + ' ' + this.user.lastName
-      this.delivery.email = this.user.email
+      this.name = this.user.firstName + ' ' + this.user.lastName
+      this.email = this.user.email
     }
   },
   methods: {
@@ -91,7 +87,10 @@ export default {
     submit() {
       if (this.$refs.form.validate()) {
         const order = {
-          delivery: this.delivery,
+          name: this.name,
+          address: this.address,
+          phone: this.phone,
+          email: this.email,
           books: this.cart
         }
         this.$store.dispatch('saveOrder', order).then(() => {

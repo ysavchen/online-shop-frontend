@@ -10,11 +10,10 @@
           <v-divider class="mx-4"></v-divider>
           <v-card-text>
             <div class="font-weight-black">Delivery:</div>
-            <div>{{ order.delivery.name }}</div>
-            <div>{{ order.delivery.address }}</div>
-            <div>{{ order.delivery.zipcode }}</div>
-            <div>Tel: {{ order.delivery.phone }}</div>
-            <div>Email: {{ order.delivery.email }}</div>
+            <div>{{ order.name }}</div>
+            <div>{{ order.address }}</div>
+            <div>Tel: {{ order.phone }}</div>
+            <div>Email: {{ order.email }}</div>
           </v-card-text>
           <v-divider class="mx-4"></v-divider>
           <v-card-text>
