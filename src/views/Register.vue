@@ -93,10 +93,6 @@ export default {
       if (this.$refs.form.validate()) {
         this.$store
           .dispatch('register', userData)
-          .then(() => {
-            const userId = this.user.id
-            this.$router.push({ name: 'userOrders', params: { id: userId } })
-          })
           .catch(error => console.error(error))
       }
     }
