@@ -10,7 +10,12 @@ const getters = {
 
 const actions = {
     saveOrder: async ({ commit }, order) => {
-        const response = await axios.post('/api/orders', order)
+        const response = await axios({
+            method: 'post',
+            url: '/api/orders',
+            data: order,
+            headers: { 'Content-Type': 'application/json;charset=UTF-8' }
+        })
         order.id = response.data.id
         commit('SAVE_ORDER', order)
     }

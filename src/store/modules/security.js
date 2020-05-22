@@ -12,12 +12,22 @@ const getters = {
 
 const actions = {
     register: async ({ commit }, user) => {
-        const response = await axios.post('/api/register', user)
+        const response = await axios({
+            method: 'post',
+            url: '/api/register',
+            data: user,
+            headers: { 'Content-Type': 'application/json;charset=UTF-8' }
+        })
         commit('SET_TOKEN', response.data.token)
         commit('SET_USER', response.data.user)
     },
     login: async ({ commit }, user) => {
-        const response = await axios.post('/api/login', user)
+        const response = await await axios({
+            method: 'post',
+            url: '/api/login',
+            data: user,
+            headers: { 'Content-Type': 'application/json;charset=UTF-8' }
+        })
         commit('SET_TOKEN', response.data.token)
         commit('SET_USER', response.data.user)
     },
