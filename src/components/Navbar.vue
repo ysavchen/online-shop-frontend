@@ -6,7 +6,7 @@
 
     <v-spacer></v-spacer>
 
-    <div v-if="!isLoggedIn">
+    <div v-if="!isAuthenticated">
       <app-register />
       <app-login />
     </div>
@@ -53,12 +53,9 @@ export default {
     'app-register': Register
   },
   computed: {
-    ...mapGetters(['cart', 'token', 'user']),
+    ...mapGetters(['cart', 'token', 'user', 'isAuthenticated']),
     cartItemCount() {
       return this.cart.length
-    },
-    isLoggedIn() {
-      return this.token !== undefined
     }
   },
   methods: {
