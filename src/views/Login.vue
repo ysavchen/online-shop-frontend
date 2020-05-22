@@ -49,9 +49,6 @@ export default {
     ...mapGetters(['user'])
   },
   methods: {
-    // login() {
-    //   this.$router.push({ name: 'login' })
-    // },
     submit() {
       const userData = {
         email: this.email,
@@ -59,10 +56,6 @@ export default {
       }
       this.$store
         .dispatch('login', userData)
-        .then(() => {
-          const userId = this.user.id
-          this.$router.push({ name: 'userOrders', params: { id: userId } })
-        })
         .catch(error => console.error(error))
     }
   }
