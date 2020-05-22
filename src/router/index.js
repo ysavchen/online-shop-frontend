@@ -1,8 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Books from '@/views/Books.vue'
-import Login from '@/views/Login.vue'
-import Register from '@/views/Register.vue'
 import Checkout from '@/views/Checkout.vue'
 import BookDetails from '@/views/BookDetails.vue'
 import Order from '@/views/Order.vue'
@@ -20,16 +18,6 @@ const routes = [
     path: '/books/:id',
     name: 'bookDetails',
     component: BookDetails
-  },
-  {
-    path: '/login',
-    name: 'login',
-    component: Login
-  },
-  {
-    path: '/register',
-    name: 'register',
-    component: Register
   },
   {
     path: '/checkout',

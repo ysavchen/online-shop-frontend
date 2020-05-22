@@ -7,8 +7,8 @@
     <v-spacer></v-spacer>
 
     <div v-if="!isLoggedIn">
-      <v-btn depressed class="primary mr-4" @click="register">Register</v-btn>
-      <v-btn depressed class="primary mr-4" @click="login">Login</v-btn>
+      <app-register />
+      <app-login />
     </div>
     <div v-else>
       <v-btn depressed class="primary mr-4" @click="logout">Logout</v-btn>
@@ -25,19 +25,19 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import Login from '@/views/Login'
+import Register from '@/views/Register'
 
 export default {
   name: 'Navbar',
   data: () => ({
     sitename: 'Online Store'
   }),
+  components: {
+    'app-login': Login,
+    'app-register': Register
+  },
   methods: {
-    register() {
-      this.$router.push({ name: 'register' })
-    },
-    login() {
-      this.$router.push({ name: 'login' })
-    },
     logout() {
       this.$store.dispatch('logout')
       this.$router.push({ name: 'books' })
