@@ -11,9 +11,24 @@
       <app-login />
     </div>
     <div v-else>
-      <v-btn depressed class="primary mr-4" @click="logout">Logout</v-btn>
+      <template>
+        <div class="text-center">
+          <v-menu offset-y>
+            <template v-slot:activator="{ on }">
+              <v-btn class="mr-4" color="primary" dark v-on="on">{{ user.firstName }}</v-btn>
+            </template>
+            <v-list>
+              <v-list-item @click="orders">
+                <v-list-item-title>Orders</v-list-item-title>
+              </v-list-item>
+              <v-list-item @click="logout">
+                <v-list-item-title>Logout</v-list-item-title>
+              </v-list-item>
+            </v-list>
+          </v-menu>
+        </div>
+      </template>
     </div>
-
     <div>
       <v-btn icon @click="openCheckout">
         {{ cartItemCount }}
@@ -42,12 +57,16 @@ export default {
       this.$store.dispatch('logout')
       this.$router.push({ name: 'books' })
     },
+    orders() {
+      const userId = this.user.id
+      this.$router.push({ name: 'userOrders', params: { id: userId } })
+    },
     openCheckout() {
       this.$router.push({ name: 'checkout' })
     }
   },
   computed: {
-    ...mapGetters(['cart', 'token']),
+    ...mapGetters(['cart', 'token', 'user']),
     cartItemCount() {
       return this.cart.length
     },
