@@ -1,4 +1,4 @@
-import axios from 'axios'  //todo: axios-auth
+import axios from 'axios'
 
 const state = {
     userOrders: []
@@ -9,8 +9,12 @@ const getters = {
 }
 
 const actions = {
-    getUserOrders: async ({ commit }, id) => {
-        const response = await axios.post(`/api/users/${id}/orders`)
+    getUserOrders: async ({ commit }, reqData) => {
+        const response = await axios({
+            method: 'get',
+            url: `/api/users/${reqData.userId}/orders`,
+            headers: { 'Authorization': `Bearer ${reqData.userToken}` }
+        })
         commit('SAVE_USER_ORDERS', response.data)
     }
 }

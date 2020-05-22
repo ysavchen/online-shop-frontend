@@ -52,19 +52,6 @@ export default {
     'app-login': Login,
     'app-register': Register
   },
-  methods: {
-    logout() {
-      this.$store.dispatch('logout')
-      this.$router.push({ name: 'books' })
-    },
-    orders() {
-      const userId = this.user.id
-      this.$router.push({ name: 'userOrders', params: { id: userId } })
-    },
-    openCheckout() {
-      this.$router.push({ name: 'checkout' })
-    }
-  },
   computed: {
     ...mapGetters(['cart', 'token', 'user']),
     cartItemCount() {
@@ -72,6 +59,25 @@ export default {
     },
     isLoggedIn() {
       return this.token !== undefined
+    }
+  },
+  methods: {
+    logout() {
+      this.$store.dispatch('logout')
+      this.$router.push({ name: 'books' })
+    },
+    orders() {
+      const userId = this.user.id
+      const userToken = this.token
+      this.$store
+        .dispatch('getUserOrders', { userId, userToken })
+        .then(() => {
+          this.$router.push({ name: 'userOrders', params: { id: userId } })
+        })
+        .catch(error => console.log(error))
+    },
+    openCheckout() {
+      this.$router.push({ name: 'checkout' })
     }
   }
 }
