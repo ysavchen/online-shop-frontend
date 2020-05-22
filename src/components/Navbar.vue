@@ -15,7 +15,7 @@
         <div class="text-center">
           <v-menu offset-y>
             <template v-slot:activator="{ on }">
-              <v-btn class="mr-4" color="primary" dark v-on="on">{{ user.firstName }}</v-btn>
+              <v-btn class="mr-2" text color="primary" v-on="on">{{ user.firstName }} {{ user.lastName }}</v-btn>
             </template>
             <v-list>
               <v-list-item @click="orders">
