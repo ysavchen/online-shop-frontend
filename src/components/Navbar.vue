@@ -19,10 +19,10 @@
             </template>
             <v-list>
               <v-list-item @click="orders">
-                <v-list-item-title>Orders</v-list-item-title>
+                <v-list-item-title class="text-center">Orders</v-list-item-title>
               </v-list-item>
               <v-list-item @click="logout">
-                <v-list-item-title>Logout</v-list-item-title>
+                <v-list-item-title class="text-center">Logout</v-list-item-title>
               </v-list-item>
             </v-list>
           </v-menu>
