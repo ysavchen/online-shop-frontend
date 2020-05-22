@@ -39,7 +39,7 @@
 
               <v-text-field
                 block
-                v-model="verify"
+                v-model="confirmPassword"
                 :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
                 :rules="[rules.required, passwordMatch]"
                 :type="show1 ? 'text' : 'password'"
@@ -62,30 +62,45 @@
 
 <script>
 import formRules from '@/mixins/formRules'
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'Register',
-  mixins: [formRules],
-  computed: {
-    passwordMatch() {
-      return () => this.password === this.verify || 'Password must match'
-    }
-  },
-  methods: {
-    submit() {
-      if (this.$refs.form.validate()) {
-        // submit form to server/API
-      }
-    }
-  },
   data: () => ({
     valid: true,
     firstName: '',
     lastName: '',
     email: '',
     password: '',
-    verify: '',
+    confirmPassword: '',
     show1: false
-  })
+  }),
+  mixins: [formRules],
+  computed: {
+    ...mapGetters(['user']),
+    passwordMatch() {
+      return () =>
+        this.password === this.confirmPassword || 'Password must match'
+    }
+  },
+  methods: {
+    submit() {
+      const userData = {
+        firstName: this.firstName,
+        lastName: this.lastName,
+        email: this.email,
+        password: this.password
+      }
+      if (this.$refs.form.validate()) {
+        this.$store
+          .dispatch('register', userData)
+          .then(() => {
+            const userId = this.user.id
+            this.$router.push({ name: 'userOrders', params: { id: userId } })
+          })
+          .catch(error => console.error(error))
+      }
+    }
+  }
 }
 </script>

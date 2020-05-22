@@ -6,6 +6,7 @@ import Register from '@/views/Register.vue'
 import Checkout from '@/views/Checkout.vue'
 import BookDetails from '@/views/BookDetails.vue'
 import Order from '@/views/Order.vue'
+import UserOrders from '@/views/UserOrders.vue'
 
 Vue.use(VueRouter)
 
@@ -39,6 +40,11 @@ const routes = [
     path: '/order',
     name: 'order',
     component: Order
+  },
+  {
+    path: '/users/:id/orders',
+    name: 'userOrders',
+    component: UserOrders
   },
   {
     path: '*',

@@ -6,11 +6,15 @@
 
     <v-spacer></v-spacer>
 
+    <div v-if="!isLoggedIn">
+      <v-btn depressed class="primary mr-4" @click="register">Register</v-btn>
+      <v-btn depressed class="primary mr-4" @click="login">Login</v-btn>
+    </div>
+    <div v-else>
+      <v-btn depressed class="primary mr-4" @click="logout">Logout</v-btn>
+    </div>
+
     <div>
-      <v-btn depressed class="primary mr-4" @click="registerForm">Register</v-btn>
-
-      <v-btn depressed class="primary mr-4" @click="loginForm">Login</v-btn>
-
       <v-btn icon @click="openCheckout">
         {{ cartItemCount }}
         <v-icon>mdi-cart-outline</v-icon>
@@ -28,20 +32,27 @@ export default {
     sitename: 'Online Store'
   }),
   methods: {
-    registerForm() {
+    register() {
       this.$router.push({ name: 'register' })
     },
-    loginForm() {
+    login() {
       this.$router.push({ name: 'login' })
+    },
+    logout() {
+      this.$store.dispatch('logout')
+      this.$router.push({ name: 'books' })
     },
     openCheckout() {
       this.$router.push({ name: 'checkout' })
     }
   },
   computed: {
-    ...mapGetters(['cart']),
+    ...mapGetters(['cart', 'token']),
     cartItemCount() {
       return this.cart.length
+    },
+    isLoggedIn() {
+      return this.token !== undefined
     }
   }
 }

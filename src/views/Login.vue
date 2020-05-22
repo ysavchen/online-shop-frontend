@@ -10,9 +10,9 @@
           <v-card-text>
             <v-form>
               <v-text-field
-                label="Login"
-                name="login"
-                prepend-icon="mdi-account"
+                label="Email"
+                name="email"
+                prepend-icon="mdi-email"
                 type="text"
                 v-model="email"
               ></v-text-field>
@@ -38,15 +38,30 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
   name: 'Login',
+  data: () => ({
+    email: '',
+    password: ''
+  }),
+  computed: {
+    ...mapGetters(['user'])
+  },
   methods: {
-    data: () => ({
-      email: '',
-      password: ''
-    }),
     submit() {
-        // submit form to server/API
+      const userData = {
+        email: this.email,
+        password: this.password
+      }
+      this.$store
+        .dispatch('login', userData)
+        .then(() => {
+          const userId = this.user.id
+          this.$router.push({ name: 'userOrders', params: { id: userId } })
+        })
+        .catch(error => console.error(error))
     }
   }
 }
