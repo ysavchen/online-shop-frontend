@@ -70,9 +70,15 @@ export default {
   }),
   mixins: [commons, formRules],
   computed: {
-    ...mapGetters(['cart']),
+    ...mapGetters(['cart', 'user']),
     total: function() {
       return this.totalPrice(this.cart)
+    }
+  },
+  created() {
+    if (this.user !== undefined) {
+      this.delivery.name = this.user.firstName + ' ' + this.user.lastName
+      this.delivery.email = this.user.email
     }
   },
   methods: {
