@@ -4,6 +4,7 @@ import books from './modules/books'
 import cart from './modules/cart'
 import order from './modules/order'
 import security from './modules/security'
+import userOrders from './modules/userOrders'
 
 Vue.use(Vuex)
 
@@ -12,6 +13,7 @@ export default new Vuex.Store({
     books,
     cart,
     order,
-    security
+    security,
+    userOrders
   }
 })

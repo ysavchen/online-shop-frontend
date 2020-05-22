@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const state = {
-    order: {}
+    order: undefined
 }
 
 const getters = {
