@@ -15,7 +15,7 @@
           </div>
         </v-col>
         <v-col class="mx-5" cols="5">
-          <div v-if="total > 0">
+          <div v-if="cart.length > 0">
             <v-card outlined>
               <v-list class="py-0">
                 <v-list-item-group v-for="book in cart" :key="book.id">

@@ -1,5 +1,6 @@
 <template>
   <v-container>
+    <div v-if="userOrders.length > 0">
     <template v-for="order in userOrders">
       <v-row :key="order.id" justify="center">
         <v-col cols="10">
@@ -29,6 +30,8 @@
         </v-col>
       </v-row>
     </template>
+    </div>
+    <div v-else class="subtitle-1 text-center">No orders available</div>
   </v-container>
 </template>
 
