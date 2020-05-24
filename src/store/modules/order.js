@@ -17,6 +17,7 @@ const actions = {
             headers: { 'Content-Type': 'application/json;charset=UTF-8' }
         })
         order.id = response.data.id
+        order.dateTime = new Date(response.data.dateTime)
         commit('SAVE_ORDER', order)
     }
 }
