@@ -1,45 +1,63 @@
 <template>
   <v-container>
-    <v-row>
-      <v-col>
-        <v-card outlined>
-          <v-list class="py-0">
-            <v-list-item-group v-for="order in userOrders" :key="order.id">
-              <template>
-                <v-list-item>
-                  {{ order.id }}
-                  <!-- <v-list-item-avatar left tile size="65">
-                    <v-img :src="book.image"></v-img>
-                  </v-list-item-avatar>
-                  <v-list-item-content>
-                    <v-list-item-title>{{ book.title }}</v-list-item-title>
-                    <v-list-item-subtitle>by {{ book.author }}</v-list-item-subtitle>
-                    <v-list-item-subtitle>${{ book.price }}</v-list-item-subtitle>
-                  </v-list-item-content>
-                  <v-list-item-action>
-                    <v-btn icon @click="deleteFromCart(book)">
-                      <v-icon color="red">mdi-close</v-icon>
-                    </v-btn>
-                  </v-list-item-action>-->
-                </v-list-item>
-                <v-divider></v-divider>
-              </template>
-            </v-list-item-group>
-          </v-list>
-        </v-card>
-      </v-col>
-    </v-row>
+    <template v-for="order in userOrders">
+      <v-row :key="order.id" justify="center">
+        <v-col cols="10">
+          <v-card>
+            <v-card-title class="grey lighten-4" style="font-size: 1.1em;">
+              Order #{{ order.id }}
+              <br />
+              {{ formattedDate(order.dateTime) }}
+              <v-spacer></v-spacer>
+              Payment: ${{ total(order) }}
+            </v-card-title>
+            <v-list-item>
+              <div id="delivery">
+                <strong>Delivery:</strong>
+                <div>{{ order.name }}</div>
+                <div>{{ order.address }}</div>
+              </div>
+              <v-spacer></v-spacer>
+
+              <div v-for="book in order.books" :key="book.id" class="mx-2 my-2">
+                <router-link :to="{ name: 'bookDetails', params: { id: book.id }}">
+                  <v-img :src="book.image" contain max-height="180" max-width="80"></v-img>
+                </router-link>
+              </div>
+            </v-list-item>
+          </v-card>
+        </v-col>
+      </v-row>
+    </template>
   </v-container>
 </template>
 
 <script>
+import moment from 'moment'
 import { mapGetters } from 'vuex'
+import commons from '@/mixins/commons'
 
 export default {
   name: 'UserOrders',
   data: () => ({}),
+  mixins: [commons],
   computed: {
     ...mapGetters(['userOrders'])
+  },
+  methods: {
+    total(order) {
+      return this.totalPrice(order.books)
+    },
+    formattedDate(date) {
+      return moment(new Date(date)).format('DD.MM.YYYY HH:MM')
+    }
   }
 }
 </script>
+
+<style>
+#delivery {
+  position: absolute;
+  top: 3px;
+}
+</style>

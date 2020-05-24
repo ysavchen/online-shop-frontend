@@ -66,7 +66,7 @@ export default {
   }),
   mixins: [commons, formRules],
   computed: {
-    ...mapGetters(['cart', 'user']),
+    ...mapGetters(['cart', 'user', 'order']),
     total: function() {
       return this.totalPrice(this.cart)
     }
@@ -86,16 +86,16 @@ export default {
     },
     submit() {
       if (this.$refs.form.validate()) {
-        const order = {
+        const orderData = {
           name: this.name,
           address: this.address,
           phone: this.phone,
           email: this.email,
           books: this.cart
         }
-        this.$store.dispatch('saveOrder', order).then(() => {
+        this.$store.dispatch('saveOrder', orderData).then(() => {
           this.$store.dispatch('emptyCart')
-          this.$router.push({ name: 'order' })
+          this.$router.push({ name: 'order',  params: { id: this.order.id } })
         })
       }
     }

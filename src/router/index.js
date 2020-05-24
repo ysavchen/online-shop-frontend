@@ -13,7 +13,7 @@ const routes = [
   { path: '/', name: 'books', component: Books },
   { path: '/books/:id', name: 'bookDetails', component: BookDetails },
   { path: '/checkout', name: 'checkout', component: Checkout },
-  { path: '/order', name: 'order', component: Order },
+  { path: '/order/:id', name: 'order', component: Order },
   {
     path: '/users/:id/orders', name: 'userOrders', component: UserOrders,
     beforeEnter(to, from, next) {
