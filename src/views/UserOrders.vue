@@ -49,7 +49,7 @@ export default {
       return this.totalPrice(order.books)
     },
     formattedDate(date) {
-      return moment(new Date(date)).format('DD.MM.YYYY HH:MM')
+      return moment(new Date(date)).format('DD.MM.YYYY HH:mm')
     }
   }
 }
