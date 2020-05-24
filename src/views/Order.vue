@@ -33,7 +33,7 @@
             <div>
               <p class="font-weight-black">Total: ${{ total }}</p>
             </div>
-            <v-divider class="mx-4"></v-divider>
+            <v-divider></v-divider>
             <div class="mt-5 text-center black--text">Thank you for order!</div>
           </v-card-text>
         </v-card>
