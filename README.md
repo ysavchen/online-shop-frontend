@@ -1,4 +1,4 @@
-# online-shop-demo-frontend
+# online-shop-frontend
 
 ## Project setup
 ```
