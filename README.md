@@ -1,5 +1,7 @@
 # online-shop-frontend
 
+Demo application for experiments
+
 ## Project setup
 ```
 npm install
