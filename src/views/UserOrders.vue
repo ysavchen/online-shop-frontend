@@ -8,7 +8,7 @@
             <v-card-title class="grey lighten-4 py-3" style="font-size: 1.1em;">
               Order #{{ order.id }}
               <br />
-              {{ formattedDate(order.dateTime) }}
+              {{ formattedDate(order.createdAt) }}
               <v-spacer></v-spacer>
               Payment: ${{ total(order) }}
             </v-card-title>
