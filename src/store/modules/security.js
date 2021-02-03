@@ -15,7 +15,7 @@ const actions = {
     register: async ({ commit, dispatch }, user) => {
         const response = await axios({
             method: 'post',
-            url: '/api/register',
+            url: '/api/v1/register',
             data: user,
             headers: { 'Content-Type': 'application/json;charset=UTF-8' }
         })
@@ -27,7 +27,7 @@ const actions = {
     login: async ({ commit, dispatch }, user) => {
         const response = await axios({
             method: 'post',
-            url: '/api/login',
+            url: '/api/v1/login',
             data: user,
             headers: { 'Content-Type': 'application/json;charset=UTF-8' }
         })

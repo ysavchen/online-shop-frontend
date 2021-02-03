@@ -12,7 +12,7 @@ const actions = {
     getUserOrders: async ({ commit }, reqData) => {
         const response = await axios({
             method: 'get',
-            url: `/api/users/${reqData.userId}/orders`,
+            url: `/api/v1/users/${reqData.userId}/orders`,
             headers: { 'Authorization': `Bearer ${reqData.userToken}` }
         })
         commit('SAVE_USER_ORDERS', response.data)
