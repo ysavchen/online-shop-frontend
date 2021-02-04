@@ -67,7 +67,7 @@ export default {
   mixins: [commons, formRules],
   computed: {
     ...mapGetters(['cart', 'user', 'order']),
-    total: function() {
+    total() {
       return this.totalPrice(this.cart)
     }
   },

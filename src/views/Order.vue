@@ -54,7 +54,7 @@ export default {
   mixins: [commons],
   computed: {
     ...mapGetters(['order']),
-    total: function() {
+    total() {
       return this.totalPrice(this.order.books)
     }
   },
