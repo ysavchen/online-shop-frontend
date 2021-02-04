@@ -5,13 +5,34 @@
         <v-col class="mx-5" cols="5">
           <v-form ref="form">
             <p class="title">Delivery address</p>
-            <v-text-field label="Name" v-model="name" :rules="[rules.required]"></v-text-field>
-            <v-text-field label="Address" v-model="address" :rules="[rules.required]"></v-text-field>
-            <v-text-field label="Phone" v-model="phone" :rules="[rules.required]"></v-text-field>
-            <v-text-field label="E-mail" v-model="email" :rules="[rules.required]"></v-text-field>
+            <v-text-field
+                label="Name"
+                v-model="name"
+                :rules="[rules.required]"
+            ></v-text-field>
+            <v-text-field
+                label="Address"
+                v-model="address"
+                :rules="[rules.required]"
+            ></v-text-field>
+            <v-text-field
+                label="Phone"
+                v-model="phone"
+                :rules="[rules.required]"
+            ></v-text-field>
+            <v-text-field
+                label="E-mail"
+                v-model="email"
+                :rules="[rules.required]"
+            ></v-text-field>
           </v-form>
           <div>
-            <v-btn color="success" @click="submit">Submit</v-btn>
+            <v-btn
+                color="success"
+                @click="submit"
+            >
+              Submit
+            </v-btn>
           </div>
         </v-col>
         <v-col class="mx-5" cols="5">

@@ -4,7 +4,11 @@
       <v-row>
         <v-col sm="5">
           <div>
-            <v-img :src="book.image" contain aspect-ratio="0.8"></v-img>
+            <v-img
+                :src="book.image"
+                contain
+                aspect-ratio="0.8"
+            ></v-img>
           </div>
         </v-col>
         <v-col>
@@ -13,7 +17,7 @@
             <div class="subtitle-1">by {{ book.author }}</div>
             <div class="body-2">${{ book.price }}</div>
             <p class="body-2">
-              <br />
+              <br/>
               {{ book.description }}
             </p>
           </div>

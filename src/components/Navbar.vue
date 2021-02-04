@@ -1,7 +1,12 @@
 <template>
   <v-app-bar app light>
     <v-toolbar-title>
-      <router-link style="text-decoration: none; color: inherit;" to="/">{{ sitename }}</router-link>
+      <router-link
+          style="text-decoration: none; color: inherit;"
+          to="/"
+      >
+        {{ sitename }}
+      </router-link>
     </v-toolbar-title>
 
     <v-spacer></v-spacer>
@@ -15,7 +20,14 @@
         <div class="text-center">
           <v-menu offset-y>
             <template v-slot:activator="{ on }">
-              <v-btn class="mr-2" text color="primary" v-on="on">{{ user.firstName }} {{ user.lastName }}</v-btn>
+              <v-btn
+                  class="mr-2"
+                  text
+                  color="primary"
+                  v-on="on"
+              >
+                {{ user.firstName }} {{ user.lastName }}
+              </v-btn>
             </template>
             <v-list>
               <v-list-item @click="orders">

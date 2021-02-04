@@ -5,7 +5,11 @@
         <template v-for="book in books">
           <v-col :key="book.id">
             <v-card max-width="250" class="pt-2 ma-2">
-              <v-img :src="book.image" contain aspect-ratio="0.8"></v-img>
+              <v-img
+                  :src="book.image"
+                  contain
+                  aspect-ratio="0.8"
+              ></v-img>
 
               <v-card-title primary-title>
                 <div>
@@ -18,8 +22,20 @@
               </v-card-subtitle>
 
               <v-card-actions>
-                <v-btn outlined small @click="details(book.id)">Details</v-btn>
-                <v-btn outlined small @click="addToCart(book)">Add to cart</v-btn>
+                <v-btn
+                    outlined
+                    small
+                    @click="details(book.id)"
+                >
+                  Details
+                </v-btn>
+                <v-btn
+                    outlined
+                    small
+                    @click="addToCart(book)"
+                >
+                  Add to cart
+                </v-btn>
               </v-card-actions>
             </v-card>
           </v-col>

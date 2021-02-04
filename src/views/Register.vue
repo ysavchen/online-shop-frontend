@@ -1,7 +1,14 @@
 <template>
   <v-dialog width="650px" overlay-opacity="0.7">
     <template v-slot:activator="{ on }">
-      <v-btn slot="activator" depressed class="primary mr-4" v-on="on">Register</v-btn>
+      <v-btn
+          slot="activator"
+          depressed
+          class="primary mr-4"
+          v-on="on"
+      >
+        Register
+      </v-btn>
     </template>
     <v-card>
       <v-card-text class="pt-6">
@@ -53,7 +60,14 @@
       </v-card-text>
       <v-card-actions>
         <v-spacer></v-spacer>
-        <v-btn depressed color="primary" :disabled="!valid" @click="submit">Submit</v-btn>
+        <v-btn
+            depressed
+            color="primary"
+            :disabled="!valid"
+            @click="submit"
+        >
+          Submit
+        </v-btn>
       </v-card-actions>
     </v-card>
   </v-dialog>

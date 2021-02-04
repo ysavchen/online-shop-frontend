@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <app-navbar />
+    <app-navbar/>
 
     <v-content>
       <router-view></router-view>
@@ -16,8 +16,6 @@ export default {
 
   components: {
     'app-navbar': Navbar
-  },
-
-  data: () => ({})
+  }
 }
 </script>

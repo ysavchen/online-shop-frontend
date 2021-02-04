@@ -22,7 +22,12 @@
 
               <div v-for="book in order.books" :key="book.id" class="mx-2 my-2">
                 <router-link :to="{ name: 'bookDetails', params: { id: book.id }}">
-                  <v-img :src="book.image" contain max-height="180" max-width="80"></v-img>
+                  <v-img
+                      :src="book.image"
+                      contain
+                      max-height="180"
+                      max-width="80"
+                  ></v-img>
                 </router-link>
               </div>
             </v-list-item>
@@ -42,7 +47,6 @@ import commons from '@/mixins/commons'
 
 export default {
   name: 'UserOrders',
-  data: () => ({}),
   mixins: [commons],
   computed: {
     ...mapGetters(['userOrders'])
