@@ -12,8 +12,8 @@
     <v-spacer></v-spacer>
 
     <div v-if="!isAuthenticated">
-      <app-register />
-      <app-login />
+      <register-dialog />
+      <login-dialog />
     </div>
     <div v-else>
       <template>
@@ -41,6 +41,7 @@
         </div>
       </template>
     </div>
+
     <div>
       <v-btn icon @click="openCheckout">
         {{ cartItemCount }}
@@ -52,8 +53,8 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import Login from '@/views/Login'
-import Register from '@/views/Register'
+import LoginDialog from '@/views/LoginDialog'
+import RegisterDialog from '@/views/RegisterDialog'
 
 export default {
   name: 'Navbar',
@@ -61,8 +62,8 @@ export default {
     sitename: 'Online Store'
   }),
   components: {
-    'app-login': Login,
-    'app-register': Register
+    'login-dialog': LoginDialog,
+    'register-dialog': RegisterDialog
   },
   computed: {
     ...mapGetters(['cart', 'token', 'user', 'isAuthenticated']),

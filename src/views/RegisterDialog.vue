@@ -1,5 +1,6 @@
 <template>
   <v-dialog width="650px" overlay-opacity="0.7">
+
     <template v-slot:activator="{ on }">
       <v-btn
           slot="activator"
@@ -10,6 +11,7 @@
         Register
       </v-btn>
     </template>
+
     <v-card>
       <v-card-text class="pt-6">
         <v-form ref="form">
@@ -58,6 +60,7 @@
           ></v-text-field>
         </v-form>
       </v-card-text>
+
       <v-card-actions>
         <v-spacer></v-spacer>
         <v-btn
@@ -69,6 +72,7 @@
           Submit
         </v-btn>
       </v-card-actions>
+
     </v-card>
   </v-dialog>
 </template>
@@ -81,11 +85,11 @@ export default {
   name: 'Register',
   data: () => ({
     valid: true,
-    firstName: '',
-    lastName: '',
-    email: '',
-    password: '',
-    confirmPassword: '',
+    firstName: null,
+    lastName: null,
+    email: null,
+    password: null,
+    confirmPassword: null,
     show1: false
   }),
   mixins: [formRules],

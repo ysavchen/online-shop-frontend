@@ -13,13 +13,13 @@ const getters = {
 
 const actions = {
     getBooks: ({ commit }) => {
-        axios.get('/api/v1/books')
+        axios.get('/v1/books')
             .then((response) => {
                 commit('ADD_BOOKS', response.data)
             })
     },
     getBookById: async ({ commit }, id) => {
-        const response = await axios.get(`/api/v1/books/${id}`)
+        const response = await axios.get(`/v1/books/${id}`)
         commit('ADD_BOOK', response.data)
     }
 }

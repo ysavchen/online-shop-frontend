@@ -16,6 +16,7 @@
                   <p class="subtitle-2" style="height: 35px">{{ book.title }}</p>
                 </div>
               </v-card-title>
+
               <v-card-subtitle>
                 <div class="body-2">by {{ book.author }}</div>
                 <div class="body-2">${{ book.price }}</div>
@@ -37,6 +38,7 @@
                   Add to cart
                 </v-btn>
               </v-card-actions>
+
             </v-card>
           </v-col>
         </template>
@@ -49,7 +51,7 @@
 import { mapGetters } from 'vuex'
 
 export default {
-  name: 'Books',
+  name: 'BooksView',
   methods: {
     details(bookId) {
       this.$router.push({ name: 'bookDetails', params: { id: bookId } })

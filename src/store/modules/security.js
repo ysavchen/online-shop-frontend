@@ -1,21 +1,21 @@
 import axios from 'axios'
 
 const state = {
-    token: undefined,
-    user: undefined
+    token: null,
+    user: null
 }
 
 const getters = {
     token: state => state.token,
     user: state => state.user,
-    isAuthenticated: state => state.token !== undefined
+    isAuthenticated: state => state.token !== null
 }
 
 const actions = {
     register: async ({ commit, dispatch }, user) => {
         const response = await axios({
             method: 'post',
-            url: '/api/v1/register',
+            url: '/v1/register',
             data: user,
             headers: { 'Content-Type': 'application/json;charset=UTF-8' }
         })
@@ -27,7 +27,7 @@ const actions = {
     login: async ({ commit, dispatch }, user) => {
         const response = await axios({
             method: 'post',
-            url: '/api/v1/login',
+            url: '/v1/login',
             data: user,
             headers: { 'Content-Type': 'application/json;charset=UTF-8' }
         })
@@ -37,14 +37,14 @@ const actions = {
     },
 
     logout: ({ commit }) => {
-        commit('SET_TOKEN', undefined)
-        commit('SET_USER', undefined)
+        commit('SET_TOKEN', null)
+        commit('SET_USER', null)
     },
 
     setLogoutTimer({ commit }, tokenExpiration) {
         setTimeout(() => {
-            commit('SET_TOKEN', undefined)
-            commit('SET_USER', undefined)
+            commit('SET_TOKEN', null)
+            commit('SET_USER', null)
         }, tokenExpiration)
     }
 }

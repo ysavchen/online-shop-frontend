@@ -9,13 +9,13 @@
 </template>
 
 <script>
-import Navbar from './components/Navbar'
+import AppNavbar from './components/AppNavbar'
 
 export default {
   name: 'App',
 
   components: {
-    'app-navbar': Navbar
+    'app-navbar': AppNavbar
   }
 }
 </script>

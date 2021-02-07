@@ -12,6 +12,7 @@
               <v-spacer></v-spacer>
               Payment: ${{ total(order) }}
             </v-card-title>
+
             <v-list-item>
               <div id="delivery">
                 <strong>Delivery:</strong>
@@ -31,6 +32,7 @@
                 </router-link>
               </div>
             </v-list-item>
+
           </v-card>
         </v-col>
       </v-row>

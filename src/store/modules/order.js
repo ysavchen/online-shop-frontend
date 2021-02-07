@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const state = {
-    order: undefined
+    order: null
 }
 
 const getters = {
@@ -12,12 +12,12 @@ const actions = {
     saveOrder: async ({ commit }, order) => {
         const response = await axios({
             method: 'post',
-            url: '/api/orders',
+            url: '/v1/orders',
             data: order,
             headers: { 'Content-Type': 'application/json;charset=UTF-8' }
         })
         order.id = response.data.id
-        order.dateTime = new Date(response.data.dateTime)
+        order.createdAt = new Date(response.data.createdAt)
         commit('SAVE_ORDER', order)
     }
 }

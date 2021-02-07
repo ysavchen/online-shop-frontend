@@ -1,7 +1,8 @@
 <template>
-  <div v-show="display">
+  <div v-show="book !== null">
     <v-container class="float-left">
       <v-row>
+
         <v-col sm="5">
           <div>
             <v-img
@@ -11,6 +12,7 @@
             ></v-img>
           </div>
         </v-col>
+
         <v-col>
           <div>
             <p class="title" style="height: 20px">{{ book.title }}</p>
@@ -22,6 +24,7 @@
             </p>
           </div>
         </v-col>
+
       </v-row>
     </v-container>
   </div>
@@ -33,8 +36,7 @@ import { mapGetters } from 'vuex'
 export default {
   name: 'BookDetails',
   data: () => ({
-    book: undefined,
-    display: false
+    book: null
   }),
   computed: {
     ...mapGetters(['bookWithId'])
@@ -42,15 +44,10 @@ export default {
   created() {
     const id = this.$route.params.id
     this.book = this.bookWithId(id)
-    if (this.book !== undefined) {
-      this.display = true
-    } else {
+    if (this.book === null) {
       this.$store
         .dispatch('getBookById', id)
-        .then(() => {
-          this.book = this.bookWithId(id)
-          this.display = true
-        })
+        .then(() => this.book = this.bookWithId(id))
         .catch(error =>
           console.error(`${error.name}: ${error.response.data.message}`)
         )

@@ -35,6 +35,7 @@
             </v-btn>
           </div>
         </v-col>
+
         <v-col class="mx-5" cols="5">
           <div v-if="cart.length > 0">
             <v-card outlined>
@@ -78,12 +79,12 @@ import commons from '@/mixins/commons'
 import formRules from '@/mixins/formRules'
 
 export default {
-  name: 'Checkout',
+  name: 'CheckoutForm',
   data: () => ({
-    name: '',
-    address: '',
-    phone: '',
-    email: ''
+    name: null,
+    address: null,
+    phone: null,
+    email: null
   }),
   mixins: [commons, formRules],
   computed: {
@@ -93,7 +94,7 @@ export default {
     }
   },
   created() {
-    if (this.user !== undefined) {
+    if (this.user !== null) {
       this.name = this.user.firstName + ' ' + this.user.lastName
       this.email = this.user.email
     }
