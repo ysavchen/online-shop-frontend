@@ -4,7 +4,7 @@ import books from './modules/books'
 import cart from './modules/cart'
 import order from './modules/order'
 import security from './modules/security'
-import userOrders from './modules/userOrders'
+import userOrders from './modules/user-orders'
 
 Vue.use(Vuex)
 

@@ -66,7 +66,12 @@ export default {
     'register-dialog': RegisterDialog
   },
   computed: {
-    ...mapGetters(['cart', 'token', 'user', 'isAuthenticated']),
+    ...mapGetters([
+        'cart',
+        'token',
+        'user',
+        'isAuthenticated'
+    ]),
     cartItemCount() {
       return this.cart.length
     }
