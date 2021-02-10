@@ -76,7 +76,7 @@
 <script>
 import { mapGetters } from 'vuex'
 import commons from '@/mixins/commons'
-import formRules from '@/mixins/formRules'
+import formRules from '@/mixins/form-rules'
 
 export default {
   name: 'CheckoutForm',

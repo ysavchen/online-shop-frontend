@@ -78,7 +78,7 @@
 </template>
 
 <script>
-import formRules from '@/mixins/formRules'
+import formRules from '@/mixins/form-rules'
 import { mapGetters } from 'vuex'
 
 export default {
