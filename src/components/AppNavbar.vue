@@ -53,8 +53,8 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import LoginDialog from '@/views/LoginDialog'
-import RegisterDialog from '@/views/RegisterDialog'
+import LoginDialog from '@/components/LoginDialog'
+import RegisterDialog from '@/components/RegisterDialog'
 
 export default {
   name: 'Navbar',
