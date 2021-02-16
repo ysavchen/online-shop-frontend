@@ -52,7 +52,7 @@
 import { mapGetters } from 'vuex'
 
 export default {
-  name: 'Login',
+  name: 'LoginDialog',
   data: () => ({
     email: null,
     password: null

@@ -57,7 +57,7 @@ import LoginDialog from '@/components/LoginDialog'
 import RegisterDialog from '@/components/RegisterDialog'
 
 export default {
-  name: 'Navbar',
+  name: 'AppNavbar',
   data: () => ({
     sitename: 'Online Store'
   }),

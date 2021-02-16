@@ -82,7 +82,7 @@ import formRules from '@/mixins/form-rules'
 import { mapGetters } from 'vuex'
 
 export default {
-  name: 'Register',
+  name: 'RegisterDialog',
   data: () => ({
     valid: true,
     firstName: null,
